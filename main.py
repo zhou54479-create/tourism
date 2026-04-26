@@ -72,11 +72,12 @@ app.add_middleware(
 # app.mount("/uploads", StaticFiles(directory=settings.UPLOAD_DIR), name="uploads")
 
 # 导入路由模块（先创建占位，后面再实现）
-# from api import users, attractions, diaries, foods, search, compression, aigc
+from api.users import router as users_router
+from api.attractions import router as attractions_router
 
 # 注册路由（先注释掉，等创建了api模块再取消注释）
-# app.include_router(users.router, prefix="/api/users", tags=["用户管理"])
-# app.include_router(attractions.router, prefix="/api/attractions", tags=["景点管理"])
+app.include_router(users_router, prefix="/api/users", tags=["用户管理"])
+app.include_router(attractions_router, prefix="/api/attractions", tags=["景点管理"])
 # app.include_router(diaries.router, prefix="/api/diaries", tags=["旅游日记"])
 # app.include_router(foods.router, prefix="/api/foods", tags=["美食推荐"])
 # app.include_router(search.router, prefix="/api/search", tags=["全文检索"])
