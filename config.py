@@ -37,8 +37,13 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
     # AIGC配置（后续添加）
-    OPENAI_API_KEY: Optional[str] = os.getenv("OPENAI_API_KEY")
+    DEEPSEEK_API_KEY: Optional[str] = os.getenv("DEEPSEEK_API_KEY")
+    DEEPSEEK_BASE_URL: str = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
+    DEEPSEEK_MODEL: str = os.getenv("DEEPSEEK_MODEL", "deepseek-chat")
     
+    # 高德地图配置
+    AMAP_API_KEY: Optional[str] = os.getenv("AMAP_API_KEY")
+
     # 文件存储
     UPLOAD_DIR: str = os.getenv("UPLOAD_DIR", "./uploads")
     

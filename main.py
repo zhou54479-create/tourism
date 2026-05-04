@@ -74,15 +74,20 @@ app.add_middleware(
 # 导入路由模块（先创建占位，后面再实现）
 from api.users import router as users_router
 from api.attractions import router as attractions_router
+from api.diaries import router as diaries_router
+from api.foods import router as foods_router
+from api.search import router as search_router
+from api.aigc import router as aigc_router
+from api.sync import router as sync_router
 
 # 注册路由（先注释掉，等创建了api模块再取消注释）
 app.include_router(users_router, prefix="/api/users", tags=["用户管理"])
 app.include_router(attractions_router, prefix="/api/attractions", tags=["景点管理"])
-# app.include_router(diaries.router, prefix="/api/diaries", tags=["旅游日记"])
-# app.include_router(foods.router, prefix="/api/foods", tags=["美食推荐"])
-# app.include_router(search.router, prefix="/api/search", tags=["全文检索"])
-# app.include_router(compression.router, prefix="/api/compression", tags=["数据压缩"])
-# app.include_router(aigc.router, prefix="/api/aigc", tags=["AIGC服务"])
+app.include_router(diaries_router, prefix="/api/diaries", tags=["日记管理"])
+app.include_router(foods_router, prefix="/api/foods", tags=["美食推荐"])
+app.include_router(search_router, prefix="/api/search", tags=["全文检索"])
+app.include_router(aigc_router, prefix="/api/aigc", tags=["AIGC服务"])
+app.include_router(sync_router, prefix="/api/admin", tags=["数据管理"])
 
 # 健康检查端点
 @app.get("/")
